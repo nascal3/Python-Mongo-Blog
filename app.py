@@ -1,14 +1,19 @@
+from app.blog import Blog
 from database import Database
-from post import Post
+
 
 Database.initialize()
 
-# post = Post(blog_id="123",
-#             title="This is the title",
-#             content="Lorem Ipsum stuff",
-#             author="John Doe"
-#             )
+blog = Blog(
+            title="This is the blog",
+            description="Lorem Ipsum stuff",
+            author="John Blog"
+            )
 
-post = Post.from_blog('123')
+blog.new_post()
 
-print(post)
+blog.save_to_mongo()
+
+from_database = Blog.from_mongo(blog.id)
+
+print(from_database)
