@@ -1,19 +1,9 @@
 from app.blog import Blog
 from database import Database
-
+from menu import Menu
 
 Database.initialize()
 
-blog = Blog(
-            title="This is the blog",
-            description="Lorem Ipsum stuff",
-            author="John Blog"
-            )
+menu = Menu()
 
-blog.new_post()
-
-blog.save_to_mongo()
-
-from_database = Blog.from_mongo(blog.id)
-
-print(from_database)
+menu.run_menu()
